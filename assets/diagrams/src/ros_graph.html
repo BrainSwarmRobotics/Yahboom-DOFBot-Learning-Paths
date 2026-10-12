@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head><body style="width:1180px">
+<h1>The simulated DOFBOT as a ROS 2 graph</h1>
+<div class="row" style="justify-content:space-between">
+  <div class="col" style="width:220px">
+    <div class="box you">your node<br><span class="small">e.g. wave_node</span></div>
+  </div>
+  <div class="col" style="width:420px">
+    <div class="box topic">/arm_controller/joint_trajectory<br><span class="small">trajectory_msgs/msg/JointTrajectory</span></div>
+    <div class="box action">/arm_controller/follow_joint_trajectory<br><span class="small">action</span></div>
+    <div class="box action">/gripper_controller/gripper_cmd<br><span class="small">action</span></div>
+  </div>
+  <div class="col" style="width:240px">
+    <div class="box node">arm_controller</div>
+    <div class="box node">gripper_controller</div>
+  </div>
+  <div class="col" style="width:170px">
+    <div class="box hw">Gazebo<br><span class="small">simulated joints<br>and camera</span></div>
+  </div>
+</div>
+<div class="row" style="margin-top:18px; justify-content:space-between">
+  <div class="col" style="width:220px">
+    <div class="box you">your node<br><span class="small">e.g. joint_monitor</span></div>
+    <div class="box you">your node<br><span class="small">e.g. color_detector</span></div>
+  </div>
+  <div class="col" style="width:420px">
+    <div class="box topic">/joint_states<br><span class="small">sensor_msgs/msg/JointState</span></div>
+    <div class="box topic">/camera/image_raw<br><span class="small">sensor_msgs/msg/Image</span></div>
+  </div>
+  <div class="col" style="width:240px">
+    <div class="box node">joint_state_broadcaster</div>
+    <div class="box node">ros_gz_bridge</div>
+  </div>
+  <div class="col" style="width:170px"><div class="box hw">Gazebo</div></div>
+</div>
+<div class="row label" style="margin-top:14px; gap:40px">
+  <span>Top row: commands flow left to right (you → controllers → arm).</span>
+  <span>Bottom row: data flows right to left (arm → topics → you).</span>
+</div>
+<div class="legend">
+  <span><i class="sw" style="background:#fff4e0;border-color:#e08a00"></i>your nodes</span>
+  <span><i class="sw" style="background:#e8f0fe;border-color:#3b6fd8"></i>robot nodes</span>
+  <span><i class="sw" style="background:#e7f6ec;border-color:#2e9d57"></i>topics</span>
+  <span><i class="sw" style="background:#fdeceb;border-color:#d14b3f"></i>actions</span>
+  <span><i class="sw" style="background:#f1f2f4;border-color:#6b7280"></i>simulator / hardware</span>
+</div>
+</body></html>

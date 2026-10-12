@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head><body style="width:1150px">
+<h1>How your console reaches the real DOFBOT</h1>
+<div class="row" style="align-items:stretch; gap:16px">
+  <div class="group" style="width:360px"><div class="gtitle">Your AnyBot console (browser)</div>
+    <div class="col">
+      <div class="box you">your nodes and ros2 commands<br><span class="small">after use_robot: FASTRTPS_DEFAULT_PROFILES_FILE =<br>/home/project/fastdds_hnet_client.xml</span></div>
+      <div class="box hw">Husarnet<br><span class="small">this console on the private network</span></div>
+    </div>
+  </div>
+  <div class="col" style="justify-content:center; width:150px; text-align:center">
+    <div class="arrow">⇄</div>
+    <div class="label">internet<br>(encrypted private network, IPv6)</div>
+  </div>
+  <div class="group" style="width:560px"><div class="gtitle">Raspberry Pi in the DOFBOT, hostname <span style="font-family:monospace">dofbot</span></div>
+    <div class="col">
+      <div class="box hw">Husarnet</div>
+      <div class="box node">Fast DDS discovery server, port 11811<br><span class="small">every node registers here, and learns where the others are</span></div>
+      <div class="row">
+        <div class="box node" style="flex:1">arm / gripper<br>controllers</div>
+        <div class="box node" style="flex:1">usb_cam</div>
+        <div class="box node" style="flex:1">move_group<br><span class="small">MoveIt 2</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="label" style="margin-top:14px">1. Your node asks the discovery server at "dofbot" who is there. &nbsp; 2. The server answers with the robot's nodes. &nbsp; 3. Messages then flow directly between your node and theirs, over Husarnet.</div>
+</body></html>

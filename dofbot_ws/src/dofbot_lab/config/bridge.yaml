@@ -1,0 +1,25 @@
+# ros_gz_bridge: Gazebo -> ROS for the learning-path simulator.
+# The first three are the same as dofbot_gazebo's bridge; the overview camera
+# is the extra camera in worlds/dofbot_lab.sdf. It is "lazy": only bridged
+# while something subscribes, so it costs nothing when nobody is looking.
+- ros_topic_name: /clock
+  gz_topic_name: /clock
+  ros_type_name: rosgraph_msgs/msg/Clock
+  gz_type_name: ignition.msgs.Clock
+  direction: GZ_TO_ROS
+- ros_topic_name: /camera/image_raw
+  gz_topic_name: /dofbot/camera/image_raw
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: ignition.msgs.Image
+  direction: GZ_TO_ROS
+- ros_topic_name: /camera/camera_info
+  gz_topic_name: /dofbot/camera/camera_info
+  ros_type_name: sensor_msgs/msg/CameraInfo
+  gz_type_name: ignition.msgs.CameraInfo
+  direction: GZ_TO_ROS
+- ros_topic_name: /overview_camera/image_raw
+  gz_topic_name: /lab/overview_camera/image
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: ignition.msgs.Image
+  direction: GZ_TO_ROS
+  lazy: true

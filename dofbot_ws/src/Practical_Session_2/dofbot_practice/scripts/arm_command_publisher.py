@@ -5,9 +5,10 @@
 # Practical Session 2, Exercise B, Python version.
 #
 # This is the same node as src/arm_command_publisher.cpp, written in Python.
-# As given it holds every joint at 0.0 rad, which is safe and boring on
-# purpose: run it first, confirm the subscriber from Exercise A sees no
-# movement, then start changing it.
+# As given it sends every joint to 0.0 rad, which on the DofBot is the arm
+# pointing straight up. If the arm starts anywhere else it moves there once,
+# slowly; after that nothing moves. Run it first, watch the subscriber from
+# Exercise A settle on zeros, then start changing it.
 #
 # WHAT YOU WILL CHANGE (see the TODO markers below):
 #   TODO 1  Put real angles in point.positions so one joint moves.
@@ -54,16 +55,19 @@ class ArmCommandPublisher(Node):
     def publish_once(self):
         message = JointTrajectory()
 
-        # The names must match what the arm actually reports. If you are
-        # unsure, run: ros2 topic echo /joint_states --once
+        # The names must match the joints the arm controller drives: the five
+        # arm joints. The gripper (finger_left_joint in /joint_states) has its
+        # own controller, and a trajectory naming any joint this controller
+        # does not drive is rejected as a whole. If you are unsure, run:
+        # ros2 topic echo /joint_states --once
         message.joint_names = [
-            'joint1', 'joint2', 'joint3', 'joint4', 'joint5', 'joint6']
+            'joint1', 'joint2', 'joint3', 'joint4', 'joint5']
 
         point = JointTrajectoryPoint()
 
         # TODO 1: replace these with your own angles, in radians, one per joint
         #         above and in the same order. Start by moving ONE joint a little.
-        point.positions = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        point.positions = [0.0, 0.0, 0.0, 0.0, 0.0]
 
         # How long the arm should take to arrive. Too short is a jerk, which
         # the controller may refuse or the hardware may not survive.

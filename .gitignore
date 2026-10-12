@@ -1,0 +1,7 @@
+# colcon output and camera snapshots, if someone builds or runs inside this checkout
+dofbot_ws/build/
+dofbot_ws/install/
+dofbot_ws/log/
+dofbot_ws/src/snapshots/
+__pycache__/
+*.pyc

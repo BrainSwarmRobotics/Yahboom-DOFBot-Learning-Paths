@@ -1,0 +1,7 @@
+# Request: the name of a pose the server knows, and how long the move should take
+string name
+float64 seconds
+---
+# Response: whether the pose was found and sent to the arm, and a message for people
+bool success
+string message

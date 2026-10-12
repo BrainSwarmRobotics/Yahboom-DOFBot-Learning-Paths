@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head><body style="width:1100px">
+<h1>Same code, two robots</h1>
+<div class="row" style="align-items:stretch; gap:22px">
+  <div class="col" style="width:240px; justify-content:center">
+    <div class="box you">your nodes<br><span class="small">wave_node, joint_monitor,<br>pick_and_place, block_sorter ...</span></div>
+  </div>
+  <div class="col" style="justify-content:center"><div class="arrow">⇄</div></div>
+  <div class="col" style="width:300px; justify-content:center">
+    <div class="box topic">/arm_controller/...<br>/gripper_controller/...<br>/joint_states</div>
+    <div class="label" style="text-align:center">the same names on both</div>
+  </div>
+  <div class="col" style="justify-content:center"><div class="arrow">⇄</div></div>
+  <div class="col" style="width:440px; gap:18px">
+    <div class="group"><div class="gtitle">Part 1: simulator, in your console</div>
+      <div class="row"><div class="box node" style="flex:1">arm / gripper controllers</div><div class="arrow">→</div><div class="box hw" style="flex:1">Gazebo<br><span class="small">physics, camera</span></div></div>
+    </div>
+    <div class="group"><div class="gtitle">Part 2: real DOFBOT, in the lab</div>
+      <div class="row"><div class="box node" style="flex:1">arm / gripper controllers</div><div class="arrow">→</div><div class="box hw" style="flex:1">servo driver<br><span class="small">6 bus servos, USB camera</span></div></div>
+    </div>
+  </div>
+</div>
+</body></html>
